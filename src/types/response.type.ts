@@ -5,13 +5,15 @@ export type TMeta = {
   totalPage?: number;
 };
 
+export type TErrorSource = {
+  path: string;
+  message: string;
+};
+
 export type TApiResponse<T> = {
   success: boolean;
   message: string;
   data?: T;
   meta?: TMeta;
-  errorSource?: {
-    path: string;
-    message: string;
-  }[];
+  errorSource?: TErrorSource[];
 };

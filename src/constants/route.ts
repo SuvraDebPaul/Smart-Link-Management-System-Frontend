@@ -11,7 +11,10 @@ export const routes = {
   dashboard: "/dashboard",
   links: "/dashboard/links",
   createLink: "/dashboard/links/create",
+
   campaigns: "/dashboard/campaigns",
+  createCampaign: "/dashboard/campaigns/create",
+
   pages: "/dashboard/pages",
   domains: "/dashboard/domains",
   apiKeys: "/dashboard/api-keys",

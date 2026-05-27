@@ -2,7 +2,7 @@ export const routes = {
   home: "/",
   features: "/features",
   pricing: "/pricing",
-  api: "/api",
+  api: "/api-docs",
   contact: "/contact",
 
   login: "/auth/login",

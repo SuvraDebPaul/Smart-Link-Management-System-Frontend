@@ -11,6 +11,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Container from "../reusable/Container";
 
 const domainFeatures = [
   {
@@ -51,12 +52,8 @@ const domainExamples = [
 export function CustomDomainSection() {
   return (
     <section className="relative overflow-hidden bg-white py-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_15%,rgba(34,211,238,0.16),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(139,92,246,0.14),transparent_32%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.12),transparent_35%)]" />
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container className="">
         <div className="relative overflow-hidden rounded-xl bg-[#061A2F] p-6 text-white shadow-2xl md:p-10 lg:p-12">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_80%_15%,rgba(139,92,246,0.26),transparent_34%),radial-gradient(circle_at_50%_90%,rgba(16,185,129,0.16),transparent_35%)]" />
-
           <div className="absolute -left-20 top-10 size-72 rounded-full bg-cyan-400/20 blur-3xl" />
           <div className="absolute -right-20 bottom-10 size-72 rounded-full bg-violet-500/20 blur-3xl" />
 
@@ -223,7 +220,7 @@ export function CustomDomainSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

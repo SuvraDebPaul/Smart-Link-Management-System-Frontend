@@ -6,6 +6,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import Container from "../reusable/Container";
 
 const stats = [
   {
@@ -44,40 +45,32 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-20">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_20%,rgba(34,211,238,0.16),transparent_30%),radial-gradient(circle_at_90%_10%,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.12),transparent_35%)]" />
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+    <section className="relative overflow-hidden bg-primary/5 py-16">
+      <Container className="">
+        <div className="mb-4 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-sm font-bold text-primary">
               <Sparkles className="size-4" />
               Platform Highlights
             </div>
 
-            <h2 className="mt-4 max-w-2xl text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
+            <h2 className="mt-4 text-4xl font-black text-slate-950 md:text-5xl">
               Built for fast sharing and powerful tracking
             </h2>
+            <p className="text-lg leading-8 text-slate-600 my-4">
+              A powerfull link management platform for creators, marketers,
+              businesses, and developers.
+            </p>
           </div>
-
-          <p className="max-w-md text-base leading-7 text-slate-600">
-            A colorful link management platform for creators, marketers,
-            businesses, and developers.
-          </p>
         </div>
-
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item) => (
             <div
               key={item.label}
-              className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/70 transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white/50 p-6 shadow-xl shadow-slate-200/70 transition duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               <div
-                className={`absolute -right-10 -top-10 size-32 rounded-full bg-gradient-to-br ${item.gradient} opacity-15 blur-2xl transition group-hover:opacity-25`}
-              />
-
-              <div
-                className={`mb-6 flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-white shadow-lg ${item.glow}`}
+                className={`mb-6 flex size-14 items-center justify-center rounded-2xl bg-linear-to-br ${item.gradient} text-white shadow-lg ${item.glow}`}
               >
                 <item.icon className="size-7" />
               </div>
@@ -96,17 +89,17 @@ export function StatsSection() {
 
               <div className="mt-6 h-2 overflow-hidden rounded-xl bg-slate-100">
                 <div
-                  className={`h-full w-3/4 rounded-xl bg-gradient-to-r ${item.gradient}`}
+                  className={`h-full w-3/4 rounded-xl bg-linear-to-r ${item.gradient}`}
                 />
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl border border-slate-200 bg-slate-800 p-5 text-white shadow-2xl">
+        <div className="mt-8 rounded-xl border border-slate-200 bg-slate-800/90 p-5 text-white shadow-2xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-600">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-linear-to-br from-emerald-500 to-cyan-600">
                 <Zap className="size-6" />
               </div>
 
@@ -125,7 +118,7 @@ export function StatsSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

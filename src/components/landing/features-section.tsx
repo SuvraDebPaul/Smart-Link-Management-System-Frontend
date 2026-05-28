@@ -13,6 +13,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import Container from "../reusable/Container";
 
 const features = [
   {
@@ -91,27 +92,22 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#061A2F] text-white py-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,0.22),transparent_30%),radial-gradient(circle_at_85%_10%,rgba(139,92,246,0.25),transparent_32%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.16),transparent_35%)]" />
-
-      <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+    <section className="relative overflow-hidden bg-[#061A2F] text-white py-16">
+      <Container>
+        <div className="">
           <Badge className="rounded-full border border-cyan-200/20 bg-white/10 p-4 text-sm font-bold text-cyan-200 hover:bg-white/10">
             <Sparkles className="mr-2 size-4" />
             Powerful Features
           </Badge>
 
-          <h2 className="mt-5 text-4xl font-black tracking-tight text-white md:text-5xl">
+          <h2 className="mt-5 text-4xl font-black text-white md:text-5xl">
             Everything you need to manage{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
               smarter links
             </span>
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-slate-300">
+          <p className="mt-4 text-lg leading-8 text-slate-300">
             Smart Link gives you colorful, secure, branded, and trackable link
             tools from one modern dashboard.
           </p>
@@ -121,26 +117,22 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <Card
               key={feature.title}
-              className="group relative overflow-hidden rounded-xl border-white/10 bg-white text-slate-950 shadow-2xl shadow-black/20 transition duration-300 hover:-translate-y-2 hover:shadow-cyan-500/20"
+              className="group relative overflow-hidden rounded-xl border-white/10 bg-white/90 text-slate-950 shadow-2xl shadow-black/20 transition duration-300 hover:-translate-y-2 hover:shadow-cyan-500/20"
             >
-              <div
-                className={`absolute -right-12 -top-12 size-36 rounded-full bg-gradient-to-br ${feature.gradient} opacity-15 blur-2xl transition group-hover:opacity-25`}
-              />
-
               <CardContent className="relative p-6">
                 <div className="mb-6 flex items-center justify-between">
                   <div
-                    className={`flex size-14 items-center justify-center rounded-xl bg-gradient-to-br ${feature.gradient} text-white shadow-lg`}
+                    className={`flex size-14 items-center justify-center rounded-xl bg-linear-to-br ${feature.gradient} text-white shadow-lg`}
                   >
                     <feature.icon className="size-8" />
                   </div>
 
-                  <div className="flex size-8 items-center justify-center rounded-xl bg-slate-200 text-xs font-black text-slate-500">
+                  <div className="flex size-8 items-center justify-center rounded-md bg-slate-300 text-xs font-black text-slate-800">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-black tracking-tight text-slate-950">
+                <h3 className="text-xl font-bold tracking-tight text-slate-950">
                   {feature.title}
                 </h3>
 
@@ -155,8 +147,8 @@ export function FeaturesSection() {
                     Included
                   </div>
 
-                  <div className="flex items-center gap-1 text-xs font-bold text-slate-400">
-                    <MousePointerClick className="size-3.5" />
+                  <div className="flex items-center gap-1 text-xs font-bold text-primary ml-4">
+                    <MousePointerClick className="size-4" />
                     Easy setup
                   </div>
                 </div>
@@ -165,7 +157,7 @@ export function FeaturesSection() {
           ))}
         </div>
 
-        <div className="mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-6 backdrop-blur">
+        <div className="mt-12 overflow-hidden rounded-xl border border-white/10 bg-white/20 p-4 backdrop-blur">
           <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto]">
             <div>
               <h3 className="text-2xl font-black text-white">
@@ -183,7 +175,7 @@ export function FeaturesSection() {
               {["Shorten", "Protect", "Track", "Grow"].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white px-4 py-3 text-center text-sm font-black text-slate-950"
+                  className="rounded-xl border border-white/10 bg-white/90 px-4 py-3 text-center text-sm font-black text-slate-950"
                 >
                   {item}
                 </div>
@@ -191,7 +183,7 @@ export function FeaturesSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

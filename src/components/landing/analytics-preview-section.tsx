@@ -9,6 +9,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import Container from "../reusable/Container";
 
 const analyticsCards = [
   {
@@ -84,10 +85,8 @@ const trafficSources = [
 
 export function AnalyticsPreviewSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,0.16),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(139,92,246,0.14),transparent_32%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.12),transparent_35%)]" />
-
-      <div className="mx-auto grid max-w-7xl items-start gap-14 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+    <section className="relative overflow-hidden bg-primary/5 py-16">
+      <Container className="grid items-start gap-14 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <Badge className="rounded-full border border-cyan-500 bg-cyan-50 p-4 text-sm font-bold text-primary hover:bg-cyan-50">
             <BarChart3 className="mr-2 size-4" />
@@ -96,7 +95,7 @@ export function AnalyticsPreviewSection() {
 
           <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
             Track every click with{" "}
-            <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-violet-600 bg-clip-text text-transparent">
               colorful insights
             </span>
           </h2>
@@ -111,16 +110,12 @@ export function AnalyticsPreviewSection() {
             {analyticsCards.map((item) => (
               <Card
                 key={item.label}
-                className="group overflow-hidden rounded-xl border-slate-200 bg-white shadow-xl shadow-slate-200/60 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="group overflow-hidden rounded-xl border-slate-200 bg-white/80 shadow-xl shadow-slate-200/60 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <CardContent className="relative p-5">
-                  <div
-                    className={`absolute -right-10 -top-10 size-28 rounded-full bg-gradient-to-br ${item.gradient} opacity-15 blur-2xl transition group-hover:opacity-25`}
-                  />
-
                   <div className="relative flex items-center gap-4">
                     <div
-                      className={`flex size-13 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-white shadow-lg`}
+                      className={`flex size-13 items-center justify-center rounded-xl bg-linear-to-br ${item.gradient} text-white shadow-lg`}
                     >
                       <item.icon className="size-6" />
                     </div>
@@ -145,14 +140,14 @@ export function AnalyticsPreviewSection() {
         </div>
 
         <div className="relative">
-          <div className="absolute -inset-4 -z-10 rounded-xl bg-gradient-to-br from-cyan-300/30 via-blue-400/20 to-violet-400/30 blur-2xl" />
+          <div className="absolute -inset-4 -z-10 rounded-xl bg-linear-to-br from-cyan-300/30 via-blue-400/20 to-violet-400/30 blur-2xl" />
 
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-800 p-4 shadow-2xl">
             <div className="rounded-xl bg-white p-5 shadow-xl">
               <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <div className="mb-2 flex items-center gap-2">
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 text-white">
                       <MousePointerClick className="size-5" />
                     </div>
                     <h3 className="text-xl font-black text-slate-950">
@@ -170,16 +165,16 @@ export function AnalyticsPreviewSection() {
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
                 <div className="flex h-64 items-end gap-3">
                   {barData.map((item) => (
                     <div
                       key={item.day}
                       className="flex flex-1 flex-col items-center gap-3"
                     >
-                      <div className="flex h-52 w-full items-end rounded-full bg-white p-1 shadow-inner">
+                      <div className="flex h-52 w-full items-end rounded-xl bg-white p-1 shadow-inner">
                         <div
-                          className={`w-full rounded-full bg-gradient-to-t ${item.gradient} shadow-lg transition duration-300 hover:scale-105`}
+                          className={`w-full rounded-xl bg-linear-to-t ${item.gradient} shadow-lg transition duration-300 hover:scale-105`}
                           style={{ height: item.value }}
                         />
                       </div>
@@ -193,7 +188,7 @@ export function AnalyticsPreviewSection() {
               </div>
 
               <div className="mt-5 grid gap-4 md:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                   <div className="mb-4 flex items-center gap-2">
                     <Globe2 className="size-5 text-cyan-600" />
                     <p className="font-black text-slate-950">Top Countries</p>
@@ -222,7 +217,7 @@ export function AnalyticsPreviewSection() {
                   </div>
                 </div>
 
-                <div className="rounded-[1.5rem] border border-slate-200 bg-gradient-to-br from-cyan-50 via-blue-50 to-violet-50 p-5 shadow-sm">
+                <div className="rounded-xl border border-slate-200 bg-linear-to-br from-cyan-50 via-blue-50 to-violet-50 p-5 shadow-sm">
                   <div className="mb-4 flex items-center gap-2">
                     <Smartphone className="size-5 text-violet-600" />
                     <p className="font-black text-slate-950">Device Split</p>
@@ -259,14 +254,14 @@ export function AnalyticsPreviewSection() {
             </div>
           </div>
 
-          <div className="absolute -right-5 -top-5 hidden rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 px-5 py-4 text-white shadow-2xl md:block">
+          <div className="absolute -right-5 -top-5 hidden rounded-2xl bg-linear-to-br from-emerald-400 to-cyan-500 px-5 py-4 text-white shadow-2xl md:block">
             <p className="text-xs font-bold uppercase tracking-wide">
               Live Data
             </p>
             <p className="text-xl font-black">Real-time</p>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

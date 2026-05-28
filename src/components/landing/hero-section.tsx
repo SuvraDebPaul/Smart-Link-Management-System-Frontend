@@ -48,7 +48,7 @@ export function HeroSection() {
       <div className="absolute -right-24 top-40 -z-10 size-80 rounded-full bg-violet-500/30 blur-3xl" />
       <div className="absolute bottom-10 left-1/2 -z-10 size-80 -translate-x-1/2 rounded-full bg-emerald-400/20 blur-3xl" />
 
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:px-8 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-4 py-11 sm:px-6 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <Badge className="mb-6 rounded-full border border-cyan-300/30 bg-white/10 p-4 text-sm font-semibold text-cyan-100 backdrop-blur hover:bg-white/10">
@@ -58,14 +58,14 @@ export function HeroSection() {
 
             <h1 className="max-w-4xl text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
               Make every link{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
                 shorter, smarter
               </span>{" "}
               and trackable.
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
-              Create colorful short links with custom aliases, password
+              Create trackable short links with custom aliases, password
               protection, expiration dates, QR codes, campaigns, and real-time
               analytics from one powerful dashboard.
             </p>
@@ -73,7 +73,7 @@ export function HeroSection() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
                 size="lg"
-                className="h-13 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 px-7 text-base font-bold text-white  hover:from-cyan-300 hover:via-blue-500 hover:to-violet-500"
+                className="h-13 rounded-xl px-7 font-bold text-base"
               >
                 Start Shortening Free
                 <ArrowRight className="ml-2 size-5" />
@@ -100,8 +100,8 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
-              <div className="rounded-3xl border border-white/10 bg-white/10 p-4 backdrop-blur">
+            <div className="mt-8 grid max-w-xl grid-cols-3 gap-4">
+              <div className="rounded-xl border border-white/10 bg-white/10 p-4 backdrop-blur">
                 <Zap className="mb-3 size-5 text-amber-300" />
                 <p className="text-2xl font-black">Fast</p>
                 <p className="text-xs font-medium text-slate-300">
@@ -109,7 +109,7 @@ export function HeroSection() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/10 p-4 backdrop-blur">
+              <div className="rounded-xl border border-white/10 bg-white/10 p-4 backdrop-blur">
                 <Globe2 className="mb-3 size-5 text-cyan-300" />
                 <p className="text-2xl font-black">Brand</p>
                 <p className="text-xs font-medium text-slate-300">
@@ -117,7 +117,7 @@ export function HeroSection() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/10 p-4 backdrop-blur">
+              <div className="rounded-xl border border-white/10 bg-white/10 p-4 backdrop-blur">
                 <ShieldCheck className="mb-3 size-5 text-emerald-300" />
                 <p className="text-2xl font-black">Secure</p>
                 <p className="text-xs font-medium text-slate-300">

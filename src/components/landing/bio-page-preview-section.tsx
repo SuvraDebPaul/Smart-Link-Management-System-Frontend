@@ -12,6 +12,7 @@ import { FaInstagram } from "react-icons/fa";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Container from "../reusable/Container";
 
 const benefits = [
   "Create a public link-in-bio page",
@@ -41,20 +42,15 @@ const bioLinks = [
 
 export function BioPagePreviewSection() {
   return (
-    <section className="relative overflow-hidden bg-[#061A2F] py-24 text-white">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.26),transparent_32%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.18),transparent_35%)]" />
-
-      <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
-
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+    <section className="relative overflow-hidden bg-[#061A2F]/90 py-16 text-white">
+      <Container className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="order-2 lg:order-1">
           <div className="relative mx-auto max-w-sm">
-            <div className="absolute -inset-5 -z-10 rounded-[3rem] bg-gradient-to-br from-cyan-400/30 via-violet-500/25 to-emerald-400/25 blur-2xl" />
+            <div className="absolute -inset-5 -z-10 rounded-[3rem] bg-linear-to-br from-cyan-400/30 via-violet-500/25 to-emerald-400/25 blur-2xl" />
 
             <div className="rounded-[2.5rem] border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur">
-              <div className="rounded-[2rem] bg-gradient-to-b from-white via-cyan-50 to-violet-50 p-5 text-slate-950">
-                <div className="rounded-[1.7rem] bg-gradient-to-br from-cyan-500 via-blue-600 to-violet-600 p-5 text-white shadow-xl">
+              <div className="rounded-[2rem] bg-linear-to-b from-white via-cyan-50 to-violet-50 p-5 text-slate-950">
+                <div className="rounded-[1.7rem] bg-linear-to-br from-cyan-500 via-blue-600 to-violet-600 p-5 text-white shadow-xl">
                   <div className="mx-auto flex size-24 items-center justify-center rounded-full border-4 border-white/30 bg-white/20 text-3xl font-black backdrop-blur">
                     SL
                   </div>
@@ -83,7 +79,7 @@ export function BioPagePreviewSection() {
                   {bioLinks.map((item) => (
                     <div
                       key={item.label}
-                      className={`group flex items-center justify-between rounded-2xl bg-gradient-to-r ${item.gradient} px-4 py-3 text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl`}
+                      className={`group flex items-center justify-between rounded-2xl bg-linear-to-r ${item.gradient} px-4 py-3 text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl`}
                     >
                       <span className="text-sm font-black">{item.label}</span>
                       <ExternalLink className="size-4 opacity-80 transition group-hover:translate-x-1" />
@@ -134,14 +130,14 @@ export function BioPagePreviewSection() {
         </div>
 
         <div className="order-1 lg:order-2">
-          <Badge className="rounded-full border border-cyan-300/20 bg-white/10 px-4 py-2 text-sm font-bold text-cyan-200 hover:bg-white/10">
+          <Badge className="rounded-full border border-cyan-300/20 bg-white/10 px-4 py-4 text-sm font-bold text-cyan-200 hover:bg-white/10">
             <Sparkles className="mr-2 size-4" />
             Link-in-Bio Pages
           </Badge>
 
           <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-white md:text-5xl">
             One colorful page for{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-300 via-emerald-300 to-amber-300 bg-clip-text text-transparent">
               all your important links
             </span>
           </h2>
@@ -156,7 +152,7 @@ export function BioPagePreviewSection() {
             {benefits.map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 backdrop-blur"
+                className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/10 px-4 py-3 backdrop-blur"
               >
                 <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-400/15 text-emerald-300">
                   <CheckCircle2 className="size-5" />
@@ -170,19 +166,19 @@ export function BioPagePreviewSection() {
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button className="h-12 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 px-6 text-base font-bold text-white shadow-xl shadow-cyan-500/25 hover:from-cyan-400 hover:via-blue-600 hover:to-violet-500">
+            <Button className="h-12 rounded-xl bg-linear-to-r from-emerald-500 to-cyan-600 px-6 text-base font-bold text-white shadow-xl shadow-cyan-500/25 hover:from-cyan-600 hover:to-emerald-500">
               Create Bio Page
             </Button>
 
             <Button
               variant="outline"
-              className="h-12 rounded-2xl border-white/20 bg-white/10 px-6 text-base font-bold text-white backdrop-blur hover:bg-white/20 hover:text-white"
+              className="h-12 rounded-xl border-white/20 bg-white/10 px-6 text-base font-bold text-white backdrop-blur hover:bg-white/20 hover:text-white"
             >
               View Demo Page
             </Button>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

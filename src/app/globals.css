@@ -46,6 +46,11 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --brand-primary: var(--my-primary);
+  --brand-secondary: var(--my-secondary);
+  --brand-tertiary: var(--my-tertiary);
+  --brand-accent: var(--my-accent);
+  --brand-muted: var(--my-muted);
 }
 
 :root {
@@ -81,6 +86,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* MY Colors  */
+  --my-primary: #041421;
+  --my-secondary: #042630;
+  --my-tertiary: #4c7273;
+  --my-accent: #86b9b0;
+  --my-muted: #d0d6d6;
 }
 
 .dark {
@@ -139,19 +151,5 @@
       linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 44px 44px;
-  }
-
-  .colorful-glow {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 30px 80px rgba(14, 165, 233, 0.25),
-      0 20px 50px rgba(99, 102, 241, 0.22);
-  }
-
-  .shortener-gradient-border {
-    background:
-      linear-gradient(white, white) padding-box,
-      linear-gradient(135deg, #06b6d4, #6366f1, #a855f7, #f59e0b) border-box;
-    border: 2px solid transparent;
   }
 }

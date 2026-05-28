@@ -19,7 +19,6 @@ import {
   X,
 } from "lucide-react";
 import { toast } from "sonner";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -284,13 +283,13 @@ export function SmartShortenerCard() {
   };
 
   return (
-    <Card className="relative overflow-hidden rounded-2xl border-slate-200 bg-white/95">
+    <Card className="relative overflow-hidden rounded-xl border-slate-500 bg-white/95">
       <div className="absolute inset-x-0 top-0 h-1.5 bg-linear-to-r from-cyan-500 via-indigo-500 to-violet-500" />
 
-      <CardContent className="p-4 sm:p-6">
+      <CardContent className="p-4 sm:p-6 sm:pt-4">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <Badge className="mb-3 rounded-full bg-cyan-50 text-primary hover:bg-cyan-50">
+            <Badge className="mb-3 rounded-full bg-cyan-50 text-primary hover:bg-cyan-50 px-4 py-3">
               <Sparkles className="mr-1.5 size-3.5" />
               Live Shortener
             </Badge>
@@ -304,7 +303,7 @@ export function SmartShortenerCard() {
             </p>
           </div>
 
-          <div className="hidden rounded-2xl bg-slate-950 px-3 py-2 text-xs font-semibold text-white sm:block">
+          <div className="hidden rounded-full bg-slate-950/80 px-3 py-2 text-xs font-semibold text-white sm:block">
             API Ready
           </div>
         </div>
@@ -318,7 +317,7 @@ export function SmartShortenerCard() {
 
             <div
               className={cn(
-                "flex rounded-2xl border bg-white p-1.5 shadow-sm transition",
+                "flex rounded-xl border bg-white p-1 shadow-sm transition",
                 longUrl && validUrl && "border-emerald-300 bg-emerald-50/40",
                 longUrl && !validUrl && "border-red-300 bg-red-50/40",
                 !longUrl && "border-slate-200",
@@ -328,7 +327,7 @@ export function SmartShortenerCard() {
                 value={longUrl}
                 onChange={(event) => setLongUrl(event.target.value)}
                 placeholder="https://example.com/very-long-url"
-                className="h-12 flex-1 border-0 bg-transparent text-base shadow-none focus-visible:ring-0"
+                className="h-10 flex-1 border-0 bg-transparent text-base shadow-none focus-visible:ring-0"
               />
 
               {longUrl && (
@@ -337,7 +336,7 @@ export function SmartShortenerCard() {
                   variant="ghost"
                   size="icon"
                   onClick={handleClearUrl}
-                  className="h-12 w-12 rounded-xl text-slate-400 hover:text-red-500"
+                  className="h-10 w-10 rounded-xl text-slate-400 hover:text-red-500"
                 >
                   <X className="size-4" />
                 </Button>
@@ -347,7 +346,7 @@ export function SmartShortenerCard() {
                 type="button"
                 variant="ghost"
                 onClick={handlePaste}
-                className="h-12 rounded-xl text-primary"
+                className="h-10 rounded-xl text-primary"
               >
                 Paste
               </Button>
@@ -385,7 +384,7 @@ export function SmartShortenerCard() {
                   type="button"
                   onClick={() => toggleOption(option.key)}
                   className={cn(
-                    "rounded-2xl border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md",
+                    "rounded-xl border p-2 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md",
                     option.className,
                     active && option.activeClassName,
                   )}

@@ -65,6 +65,7 @@ export default function CampaignDetailsPage() {
   const [isAdding, setIsAdding] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [isDeletingCampaign, setIsDeletingCampaign] = useState(false);
+  const [showDeleteCampaignModal, setShowDeleteCampaignModal] = useState(false);
 
   const [removeTargetLinkId, setRemoveTargetLinkId] = useState<string | null>(
     null,
@@ -148,23 +149,20 @@ export default function CampaignDetailsPage() {
   };
 
   const handleDeleteCampaign = async () => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this campaign? Links will not be deleted, only removed from this campaign.",
-    );
-
-    if (!confirmed) return;
-
     try {
       setIsDeletingCampaign(true);
 
       await CampaignService.deleteCampaign(campaignId);
 
+      toast.success("Campaign deleted successfully");
+
+      setShowDeleteCampaignModal(false);
+
       router.push(routes.campaigns);
       router.refresh();
-    } catch (error) {
-      console.error(error);
-      alert(
-        error instanceof Error ? error.message : "Failed to delete campaign",
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message || "Failed to delete campaign",
       );
     } finally {
       setIsDeletingCampaign(false);
@@ -252,7 +250,7 @@ export default function CampaignDetailsPage() {
             <Button
               variant="outline"
               disabled={isDeletingCampaign}
-              onClick={handleDeleteCampaign}
+              onClick={() => setShowDeleteCampaignModal(true)}
               className="text-rose-600 hover:bg-rose-50 hover:text-rose-700"
             >
               {isDeletingCampaign ? (
@@ -511,6 +509,50 @@ export default function CampaignDetailsPage() {
                   <>
                     <X className="mr-2 h-4 w-4" />
                     Remove URL
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showDeleteCampaignModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 px-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+            <h2 className="text-lg font-semibold text-slate-900">
+              Delete this campaign?
+            </h2>
+
+            <p className="mt-2 text-sm text-slate-500">
+              This campaign will be deleted, but your smart links will not be
+              deleted. They will only be removed from this campaign.
+            </p>
+
+            <div className="mt-6 flex justify-end gap-3">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowDeleteCampaignModal(false)}
+                disabled={isDeletingCampaign}
+              >
+                Cancel
+              </Button>
+
+              <Button
+                type="button"
+                onClick={handleDeleteCampaign}
+                disabled={isDeletingCampaign}
+                className="bg-rose-600 text-white hover:bg-rose-700"
+              >
+                {isDeletingCampaign ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    Delete Campaign
                   </>
                 )}
               </Button>

@@ -16,6 +16,8 @@ export const routes = {
   createCampaign: "/dashboard/campaigns/create",
 
   pages: "/dashboard/pages",
+  createPage: "/dashboard/pages/create",
+
   domains: "/dashboard/domains",
   apiKeys: "/dashboard/api-keys",
   analytics: "/dashboard/analytics",

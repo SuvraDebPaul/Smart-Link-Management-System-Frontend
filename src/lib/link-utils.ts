@@ -5,11 +5,20 @@ export function getLinkId(link: TLink) {
 }
 
 export function getShortUrl(link: TLink) {
+  if (link.customShortUrl) return link.customShortUrl;
+
   if (link.shortUrl) return link.shortUrl;
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  if (link.domain?.domain) {
+    return `https://${link.domain.domain}/${link.shortCode}`;
+  }
 
-  return `${appUrl}/${link.shortCode}`;
+  const appUrl =
+    process.env.NEXT_PUBLIC_SHORT_URL_BASE ||
+    process.env.NEXT_PUBLIC_APP_URL ||
+    "http://localhost:3000";
+
+  return `${appUrl.replace(/\/$/, "")}/${link.shortCode}`;
 }
 
 export function getClickCount(link: TLink) {

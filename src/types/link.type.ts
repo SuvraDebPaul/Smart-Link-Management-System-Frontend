@@ -16,20 +16,31 @@ export type TUpdateLinkPayload = Partial<TCreateLinkPayload> & {
 export type TLink = {
   _id?: string;
   id?: string;
-  user?: string;
+
   originalUrl: string;
   shortCode: string;
+
   shortUrl?: string;
-  customAlias?: string;
-  password?: string;
-  expiresAt?: string;
-  title?: string | null;
+  defaultShortUrl?: string;
+  customShortUrl?: string | null;
+
   campaignId?: string | null;
-  domainId?: string;
-  totalClicks?: number;
+  domainId?: string | null;
+
+  domain?: {
+    id: string;
+    domain: string;
+    status?: string;
+    isActive?: boolean;
+  } | null;
+
   clicks?: number;
+  totalClicks?: number;
   isActive?: boolean;
-  isDeleted?: boolean;
+  isPasswordProtected?: boolean;
+  expiresAt?: string | null;
+  maxClicks?: number | null;
+
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 };

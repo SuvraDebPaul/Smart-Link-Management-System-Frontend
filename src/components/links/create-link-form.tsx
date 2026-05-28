@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   CalendarClock,
-  Copy,
+  Globe2,
   Download,
   Eye,
   EyeOff,
@@ -14,7 +14,7 @@ import {
   Tags,
   WandSparkles,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import { toast } from "sonner";
 
@@ -23,6 +23,8 @@ import { Input } from "@/components/ui/input";
 import { LinkService } from "@/services/link.service";
 import { getShortUrl } from "@/lib/link-utils";
 import type { TLink } from "@/types/link.type";
+import { TDomain } from "@/types/domain.type";
+import { DomainService } from "@/services/domain.service";
 
 function isValidUrl(value: string) {
   try {
@@ -46,9 +48,31 @@ export function CreateLinkForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [createdLink, setCreatedLink] = useState<TLink | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [domains, setDomains] = useState<TDomain[]>([]);
+  const [selectedDomainId, setSelectedDomainId] = useState("");
 
   const campaignId = searchParams.get("campaignId");
   const shortUrl = createdLink ? getShortUrl(createdLink) : "";
+
+  useEffect(() => {
+    const loadDomains = async () => {
+      try {
+        const response = await DomainService.getMyDomain();
+
+        if (response.success && response.data) {
+          const verifiedActiveDomains = response.data.filter(
+            (domain) => domain.status === "verified" && domain.isActive,
+          );
+
+          setDomains(verifiedActiveDomains);
+        }
+      } catch {
+        // Custom domain is optional, so link creation should not be blocked.
+      }
+    };
+
+    loadDomains();
+  }, []);
 
   const handleDownloadQrCode = () => {
     if (!qrCodeRef.current || !shortUrl) {
@@ -159,6 +183,7 @@ export function CreateLinkForm() {
         password: password || undefined,
         expiresAt: expiresAt || undefined,
         campaignId: campaignId || null,
+        domainId: selectedDomainId || null,
       });
 
       if (!response.success || !response.data) {
@@ -216,7 +241,9 @@ export function CreateLinkForm() {
 
             <div className="flex overflow-hidden rounded-2xl border border-slate-200 bg-white">
               <div className="hidden items-center border-r border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-500 sm:flex">
-                your-domain/
+                {selectedDomainId
+                  ? `${domains.find((domain) => domain.id === selectedDomainId)?.domain}/`
+                  : "default-domain/"}
               </div>
 
               <Input
@@ -226,6 +253,30 @@ export function CreateLinkForm() {
                 className="h-12 border-0 shadow-none focus-visible:ring-0"
               />
             </div>
+          </div>
+          <div>
+            <label className="mb-2 flex items-center gap-2 text-sm font-bold text-slate-700">
+              <Globe2 className="size-4 text-primary" />
+              Custom Domain
+            </label>
+
+            <select
+              value={selectedDomainId}
+              onChange={(event) => setSelectedDomainId(event.target.value)}
+              className="h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10"
+            >
+              <option value="">Use default Smart Link domain</option>
+
+              {domains.map((domain) => (
+                <option key={domain.id} value={domain.id}>
+                  {domain.domain}
+                </option>
+              ))}
+            </select>
+
+            <p className="mt-2 text-xs font-medium text-slate-500">
+              Only verified and active custom domains are shown here.
+            </p>
           </div>
 
           <div>
@@ -320,7 +371,7 @@ export function CreateLinkForm() {
                 }
                 className="h-12 rounded-2xl font-bold"
               >
-                Back to Champaign
+                Back to Campaign
               </Button>
             ) : (
               <Button

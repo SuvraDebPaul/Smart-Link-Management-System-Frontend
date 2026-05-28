@@ -15,6 +15,7 @@ import {
   Target,
   Trash2,
   X,
+  BarChart3,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -244,6 +245,13 @@ export default function CampaignDetailsPage() {
               <Link href={`/dashboard/campaigns/${campaign.id}/edit`}>
                 <Pencil className="mr-2 h-4 w-4" />
                 Edit
+              </Link>
+            </Button>
+
+            <Button variant="outline" asChild>
+              <Link href={`/dashboard/analytics/campaigns/${campaign.id}`}>
+                <BarChart3 className="mr-2 h-4 w-4" />
+                Analytics
               </Link>
             </Button>
 

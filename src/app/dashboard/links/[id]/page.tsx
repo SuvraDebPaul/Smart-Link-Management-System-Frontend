@@ -9,6 +9,7 @@ import {
   Loader2,
   MousePointerClick,
   Power,
+  BarChart3,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -103,20 +104,31 @@ export default function LinkDetailsPage({ params }: TLinkDetailsPageProps) {
 
   return (
     <div className="space-y-8">
-      <section className="overflow-hidden rounded-[2rem] bg-slate-950 p-6 text-white shadow-2xl">
+      <section className="overflow-hidden rounded-xl bg-slate-900/90 p-6 text-white shadow-xl">
         <div className="relative">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.26),transparent_34%),radial-gradient(circle_at_50%_90%,rgba(16,185,129,0.16),transparent_35%)]" />
+          <div className="flex justify-between">
+            <Button
+              asChild
+              variant="outline"
+              className="mb-5 rounded-xl border-white/80 bg-white/10 font-bold text-white hover:bg-white/20 hover:text-white"
+            >
+              <Link href="/dashboard/links">
+                <ArrowLeft className="mr-2 size-4" />
+                Back to Links
+              </Link>
+            </Button>
 
-          <Button
-            asChild
-            variant="outline"
-            className="mb-5 rounded-2xl border-white/20 bg-white/10 font-bold text-white hover:bg-white/20 hover:text-white"
-          >
-            <Link href="/dashboard/links">
-              <ArrowLeft className="mr-2 size-4" />
-              Back to Links
-            </Link>
-          </Button>
+            <Button
+              variant="outline"
+              asChild
+              className="mb-5 rounded-xl border-white/80 bg-white/10 font-bold text-white hover:bg-white/20 hover:text-white"
+            >
+              <Link href={`/dashboard/analytics/links/${link.id || link._id}`}>
+                <BarChart3 className="mr-2 h-4 w-4" />
+                Analytics
+              </Link>
+            </Button>
+          </div>
 
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
@@ -136,10 +148,10 @@ export default function LinkDetailsPage({ params }: TLinkDetailsPageProps) {
             <div
               className={
                 status === "Active"
-                  ? "rounded-full bg-emerald-400/15 px-4 py-2 text-sm font-black text-emerald-300"
+                  ? "rounded-full bg-emerald-400/15 px-6 py-2 text-sm font-black text-emerald-200"
                   : status === "Expired"
-                    ? "rounded-full bg-amber-400/15 px-4 py-2 text-sm font-black text-amber-300"
-                    : "rounded-full bg-red-400/15 px-4 py-2 text-sm font-black text-red-300"
+                    ? "rounded-full bg-amber-400/15 px-6 py-2 text-sm font-black text-amber-300"
+                    : "rounded-full bg-red-400/15 px-6 py-2 text-sm font-black text-red-300"
               }
             >
               {status}
